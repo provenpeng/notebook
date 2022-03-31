@@ -1,0 +1,9 @@
+{
+    "title": "学习笔记",
+    "author": "张鹏",
+    "description": "通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。",
+    "language": "zh-hans",
+    "plugins":[
+        "expandable-chapters"
+    ]
+}
