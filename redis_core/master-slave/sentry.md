@@ -3,6 +3,7 @@
 在主从集群读写分离的模式下，如果主库发生了故障，会影响到从库的同步，而且主库故障会导致无法处理客户端的写请求。因此需要在主库挂了的时候，把一个从库切换为主库。
 
 在redis主从集群中，使用哨兵机制解决主库挂了的问题。配置方式如下：
+
 ```bash
 sentinel monitor <master-name> <ip> <port> <quorum>
 # 其中<quorum>是一个数字，指明当有多少个sentinel认为一个master失效时，master才算真正失效
