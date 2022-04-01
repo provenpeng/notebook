@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>RDB · 学习笔记</title>
+        <title>RDB快照 · 学习笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -139,7 +139,7 @@
                 <a href="aof.html">
             
                     
-                    AOF
+                    AOF日志
             
                 </a>
             
@@ -152,7 +152,7 @@
                 <a href="rdb.html">
             
                     
-                    RDB
+                    RDB快照
             
                 </a>
             
@@ -185,6 +185,32 @@
             
                     
                     主从数据同步
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../master-slave/sentry.html">
+            
+                <a href="../master-slave/sentry.html">
+            
+                    
+                    哨兵机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../master-slave/sentry_cluster.html">
+            
+                <a href="../master-slave/sentry_cluster.html">
+            
+                    
+                    哨兵集群
             
                 </a>
             
@@ -232,7 +258,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >RDB</a>
+        <a href="../.." >RDB快照</a>
     </h1>
 </div>
 
@@ -251,7 +277,7 @@
 <blockquote>
 <p>&#x5B95;&#x673A;&#x540E;&#x7684;&#x5FEB;&#x901F;&#x6062;&#x590D;</p>
 </blockquote>
-<p>&#x5F53;redis&#x5B95;&#x673A;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x7528;AOF&#x8FDB;&#x884C;&#x6062;&#x590D;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;AOF&#x4E2D;&#x64CD;&#x4F5C;&#x65E5;&#x5FD7;&#x592A;&#x591A;&#xFF0C;redis&#x5C31;&#x4F1A;&#x56DE;&#x590D;&#x7684;&#x6162;&#xFF0C;&#x5F71;&#x54CD;&#x6B63;&#x5E38;&#x4F7F;&#x7528;&#x3002;&#x56E0;&#x6B64;&#x5F15;&#x5165;RDB&#x5FEB;&#x7167;&#xFF08;&#x5168;&#x91CF;&#x5FEB;&#x7167;&#xFF09;&#xFF0C;&#x5C06;redis&#x67D0;&#x4E00;&#x65F6;&#x523B;&#x7684;&#x72B6;&#x6001;&#x4EE5;&#x6587;&#x4EF6;&#x7684;&#x5F62;&#x5F0F;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x4E0A;&#x3002;</p>
+<p>&#x5F53;redis&#x5B95;&#x673A;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x7528;AOF&#x8FDB;&#x884C;&#x6062;&#x590D;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;AOF&#x4E2D;&#x64CD;&#x4F5C;&#x65E5;&#x5FD7;&#x592A;&#x591A;&#xFF0C;redis&#x5C31;&#x4F1A;&#x6062;&#x590D;&#x7684;&#x6162;&#xFF0C;&#x5F71;&#x54CD;&#x6B63;&#x5E38;&#x4F7F;&#x7528;&#x3002;&#x56E0;&#x6B64;&#x5F15;&#x5165;RDB&#x5FEB;&#x7167;&#xFF0C;&#x5C06;redis&#x67D0;&#x4E00;&#x65F6;&#x523B;&#x7684;&#x72B6;&#x6001;&#x4EE5;&#x6587;&#x4EF6;&#x7684;&#x5F62;&#x5F0F;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x4E0A;&#x3002;</p>
 <h2 id="&#x751F;&#x6210;rdb&#x8FC7;&#x7A0B;&#x4F1A;&#x963B;&#x585E;&#x4E3B;&#x7EBF;&#x7A0B;&#x5417;">&#x751F;&#x6210;RDB&#x8FC7;&#x7A0B;&#x4F1A;&#x963B;&#x585E;&#x4E3B;&#x7EBF;&#x7A0B;&#x5417;</h2>
 <p>redis&#x63D0;&#x4F9B;&#x4E86;&#x5982;&#x4E0B;&#x4E24;&#x4E2A;&#x547D;&#x4EE4;&#x6765;&#x751F;&#x6210;RDB&#x6587;&#x4EF6;:</p>
 <ol>
@@ -302,7 +328,7 @@
 
             
                 
-                <a href="aof.html" class="navigation navigation-prev " aria-label="Previous page: AOF">
+                <a href="aof.html" class="navigation navigation-prev " aria-label="Previous page: AOF日志">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -318,7 +344,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RDB","level":"1.2.1.2","depth":3,"next":{"title":"主从集群","level":"1.2.2","depth":2,"path":"redis_core/master-slave/README.md","ref":"redis_core/master-slave/README.md","articles":[{"title":"主从数据同步","level":"1.2.2.1","depth":3,"path":"redis_core/master-slave/data_sync.md","ref":"redis_core/master-slave/data_sync.md","articles":[]}]},"previous":{"title":"AOF","level":"1.2.1.1","depth":3,"path":"redis_core/persistence/aof.md","ref":"redis_core/persistence/aof.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"张鹏","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","gitbook":"*","description":"通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。"},"file":{"path":"redis_core/persistence/rdb.md","mtime":"2022-03-31T02:24:48.120Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-31T02:48:00.977Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RDB快照","level":"1.2.1.2","depth":3,"next":{"title":"主从集群","level":"1.2.2","depth":2,"path":"redis_core/master-slave/README.md","ref":"redis_core/master-slave/README.md","articles":[{"title":"主从数据同步","level":"1.2.2.1","depth":3,"path":"redis_core/master-slave/data_sync.md","ref":"redis_core/master-slave/data_sync.md","articles":[]},{"title":"哨兵机制","level":"1.2.2.2","depth":3,"path":"redis_core/master-slave/sentry.md","ref":"redis_core/master-slave/sentry.md","articles":[]},{"title":"哨兵集群","level":"1.2.2.3","depth":3,"path":"redis_core/master-slave/sentry_cluster.md","ref":"redis_core/master-slave/sentry_cluster.md","articles":[]}]},"previous":{"title":"AOF日志","level":"1.2.1.1","depth":3,"path":"redis_core/persistence/aof.md","ref":"redis_core/persistence/aof.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"张鹏","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","gitbook":"*","description":"通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。"},"file":{"path":"redis_core/persistence/rdb.md","mtime":"2022-04-01T01:32:05.204Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-01T07:37:27.217Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
