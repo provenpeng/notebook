@@ -2,6 +2,9 @@
 
 * [简介](README.md)
 * [redis核心技术](redis_core/README.md)
+  * [数据结构](redis_core/data_structure/README.md)
+    * [数据类型](redis_core/data_structure/data_type.md)
+    * [全局hash表](redis_core/data_structure/global_hash.md)
   * [持久化机制](redis_core/persistence/README.md)
     * [AOF日志](redis_core/persistence/aof.md)
     * [RDB快照](redis_core/persistence/rdb.md)

@@ -12,12 +12,17 @@
         
         
     
+    
     <link rel="stylesheet" href="../../gitbook/style.css">
 
     
             
                 
                 <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
                 
             
                 
@@ -48,6 +53,9 @@
         
     
         
+    
+
+
     
 
         
@@ -120,7 +128,52 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="./">
+        <li class="chapter " data-level="1.2.1" data-path="../data_structure/">
+            
+                <a href="../data_structure/">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../data_structure/data_type.html">
+            
+                <a href="../data_structure/data_type.html">
+            
+                    
+                    数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../data_structure/global_hash.html">
+            
+                <a href="../data_structure/global_hash.html">
+            
+                    
+                    全局hash
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="./">
             
                 <a href="./">
             
@@ -134,7 +187,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1.1" data-path="aof.html">
+        <li class="chapter " data-level="1.2.2.1" data-path="aof.html">
             
                 <a href="aof.html">
             
@@ -147,7 +200,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.1.2" data-path="rdb.html">
+        <li class="chapter active" data-level="1.2.2.2" data-path="rdb.html">
             
                 <a href="rdb.html">
             
@@ -165,7 +218,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../master-slave/">
+        <li class="chapter " data-level="1.2.3" data-path="../master-slave/">
             
                 <a href="../master-slave/">
             
@@ -179,7 +232,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.2.1" data-path="../master-slave/data_sync.html">
+        <li class="chapter " data-level="1.2.3.1" data-path="../master-slave/data_sync.html">
             
                 <a href="../master-slave/data_sync.html">
             
@@ -192,7 +245,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2.2" data-path="../master-slave/sentry.html">
+        <li class="chapter " data-level="1.2.3.2" data-path="../master-slave/sentry.html">
             
                 <a href="../master-slave/sentry.html">
             
@@ -205,7 +258,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2.3" data-path="../master-slave/sentry_cluster.html">
+        <li class="chapter " data-level="1.2.3.3" data-path="../master-slave/sentry_cluster.html">
             
                 <a href="../master-slave/sentry_cluster.html">
             
@@ -344,17 +397,22 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RDB快照","level":"1.2.1.2","depth":3,"next":{"title":"主从集群","level":"1.2.2","depth":2,"path":"redis_core/master-slave/README.md","ref":"redis_core/master-slave/README.md","articles":[{"title":"主从数据同步","level":"1.2.2.1","depth":3,"path":"redis_core/master-slave/data_sync.md","ref":"redis_core/master-slave/data_sync.md","articles":[]},{"title":"哨兵机制","level":"1.2.2.2","depth":3,"path":"redis_core/master-slave/sentry.md","ref":"redis_core/master-slave/sentry.md","articles":[]},{"title":"哨兵集群","level":"1.2.2.3","depth":3,"path":"redis_core/master-slave/sentry_cluster.md","ref":"redis_core/master-slave/sentry_cluster.md","articles":[]}]},"previous":{"title":"AOF日志","level":"1.2.1.1","depth":3,"path":"redis_core/persistence/aof.md","ref":"redis_core/persistence/aof.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"张鹏","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","gitbook":"*","description":"通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。"},"file":{"path":"redis_core/persistence/rdb.md","mtime":"2022-04-01T01:32:05.204Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-01T07:37:27.217Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RDB快照","level":"1.2.2.2","depth":3,"next":{"title":"主从集群","level":"1.2.3","depth":2,"path":"redis_core/master-slave/README.md","ref":"redis_core/master-slave/README.md","articles":[{"title":"主从数据同步","level":"1.2.3.1","depth":3,"path":"redis_core/master-slave/data_sync.md","ref":"redis_core/master-slave/data_sync.md","articles":[]},{"title":"哨兵机制","level":"1.2.3.2","depth":3,"path":"redis_core/master-slave/sentry.md","ref":"redis_core/master-slave/sentry.md","articles":[]},{"title":"哨兵集群","level":"1.2.3.3","depth":3,"path":"redis_core/master-slave/sentry_cluster.md","ref":"redis_core/master-slave/sentry_cluster.md","articles":[]}]},"previous":{"title":"AOF日志","level":"1.2.2.1","depth":3,"path":"redis_core/persistence/aof.md","ref":"redis_core/persistence/aof.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","mermaid-gb3","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"张鹏","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","gitbook":"*","description":"通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。"},"file":{"path":"redis_core/persistence/rdb.md","mtime":"2022-04-01T01:32:05.204Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-01T08:37:29.760Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
         
         <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
         
     
         
@@ -385,6 +443,8 @@
         <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
         
     
+
+    <script src="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
 
     </body>
 </html>
