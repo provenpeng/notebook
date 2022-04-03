@@ -2,7 +2,7 @@
 
 上文说到的数据类型和数据结构都是value的底层实现，那么key和value怎么组织起来的呢？
 
-为了从key到value的快速访问，redis采用了一个哈希表来保存所有键值对。称为**全局哈希表**，hash桶中的entry元素中保存了\*key和\*value指针，分别指向实际的键与值。
+为了从key到value的快速访问，redis采用了一个哈希表来保存所有键值对。称为**全局哈希表**，hash桶中的entry元素中保存了\*key和\*value指针，分别指向实际的键值（RedisObject）。
 
 ## 链式HASH
 
