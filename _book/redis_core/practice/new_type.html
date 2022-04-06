@@ -398,13 +398,77 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x7C7B;&#x578B;">&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x7C7B;&#x578B;</h1>
-<p>&#x5982;&#x4F55;&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1F;</p>
+<p>&#x5982;&#x4F55;&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1F;
+&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x5355;&#x94FE;&#x8868;&#x7C7B;&#x578B;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#x63CF;&#x8FF0;&#xFF1A;</p>
+<p><strong>1. &#x5B9A;&#x4E49;&#x65B0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x5E95;&#x5C42;&#x7ED3;&#x6784;</strong></p>
+<p>   &#x7528;newtype.h&#x4FDD;&#x5B58;&#x65B0;&#x7C7B;&#x578B;&#x7684;&#x5B9A;&#x4E49;</p>
+<pre><code class="lang-C">    <span class="hljs-keyword">struct</span> NewTypeObject {
+        <span class="hljs-keyword">struct</span> NewTypeNode *head; <span class="hljs-comment">// &#x5934;&#x8282;&#x70B9;</span>
+        <span class="hljs-keyword">size_t</span> len;     <span class="hljs-comment">// &#x957F;&#x5EA6;</span>
+    }NewTypeObject;
+</code></pre>
+<p>   &#x5176;&#x4E2D;&#xFF0C;NewTypeNode&#x7ED3;&#x6784;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x65B0;&#x7C7B;&#x578B;&#x7684;&#x5E95;&#x5C42;&#x7ED3;&#x6784;</p>
+<pre><code class="lang-C">   <span class="hljs-keyword">struct</span> NewTypeNode {
+        <span class="hljs-keyword">long</span> value; <span class="hljs-comment">// &#x4FDD;&#x5B58;&#x5B9E;&#x9645;&#x6570;&#x636E;</span>
+        <span class="hljs-keyword">struct</span> NewTypeNode *next;   <span class="hljs-comment">// &#x6307;&#x5411;&#x4E0B;&#x4E00;&#x8282;&#x70B9;</span>
+    };
+</code></pre>
+<p><strong>2. &#x5728;RedisObject&#x7684;type&#x5C5E;&#x6027;&#x4E2D;&#xFF0C;&#x589E;&#x52A0;&#x8FD9;&#x4E2A;&#x65B0;&#x7C7B;&#x578B;&#x7684;&#x5B9A;&#x4E49;</strong></p>
+<p>   &#x8FD9;&#x4E2A;&#x5B9A;&#x4E49;&#x662F;&#x5728;Redis&#x7684;server.h&#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x53EB;&#x4F5C;OBJ_NEWTYPE&#x7684;&#x5B8F;&#x5B9A;&#x4E49;&#xFF0C;&#x7528;&#x6765;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x6307;&#x4EE3;NewTypeObject&#x8FD9;&#x4E2A;&#x65B0;&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code class="lang-C">   <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> OBJ_STRING 0    <span class="hljs-comment">/* String object. */</span></span>
+   <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> OBJ_LIST 1      <span class="hljs-comment">/* List object. */</span></span>
+   <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> OBJ_SET 2       <span class="hljs-comment">/* Set object. */</span></span>
+   <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> OBJ_ZSET 3      <span class="hljs-comment">/* Sorted set object. */</span></span>
+   &#x2026;
+   <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> OBJ_NEWTYPE 7</span>
+</code></pre>
+<p><strong>3. &#x5F00;&#x53D1;&#x65B0;&#x7C7B;&#x578B;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x91CA;&#x653E;&#x51FD;&#x6570;</strong></p>
+<p>   redis&#x628A;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x91CA;&#x653E;&#x51FD;&#x6570;&#x90FD;&#x5B9A;&#x4E49;&#x5728;&#x4E86;object.c&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x8BE5;&#x6587;&#x4EF6;&#x4E2D;&#x589E;&#x52A0;NewTypeObject&#x7684;&#x521B;&#x5EFA;&#x51FD;&#x6570;createNewTypeObject&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-C">   <span class="hljs-function">robj *<span class="hljs-title">createNewTypeObject</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{
+       NewTypeObject *h = newtypeNew(); 
+       robj *o = createObject(OBJ_NEWTYPE,h);
+       <span class="hljs-keyword">return</span> o;
+   }
+</code></pre>
+<p>   newtypeNew&#x51FD;&#x6570;&#x6D89;&#x53CA;&#x5230;&#x65B0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x5177;&#x4F53;&#x521B;&#x5EFA;&#x3002;redis&#x9ED8;&#x8BA4;&#x4F1A;&#x4E3A;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x6587;&#x4EF6;&#xFF0C;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x547D;&#x4EE4;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;t_string.c&#x548C;t_list.c&#x5206;&#x522B;&#x5BF9;&#x5E94;String&#x548C;List&#x7C7B;&#x578B;&#x3002;&#x6309;&#x7167;Redis&#x7684;&#x60EF;&#x4F8B;&#xFF0C;&#x628A;newtypeNew&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x5728;&#x540D;&#x4E3A;t_newtype.c&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<pre><code class="lang-C">   <span class="hljs-function">NewTypeObject *<span class="hljs-title">newtypeNew</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>{
+       NewTypeObject *n = zmalloc(<span class="hljs-keyword">sizeof</span>(*n));
+       n-&gt;head = <span class="hljs-literal">NULL</span>;
+       n-&gt;len = <span class="hljs-number">0</span>;
+       <span class="hljs-keyword">return</span> n;
+   }
+</code></pre>
+<p>   createObject&#x662F;Redis&#x672C;&#x8EAB;&#x63D0;&#x4F9B;&#x7684;RedisObject&#x521B;&#x5EFA;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x7684;&#x53C2;&#x6570;&#x662F;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;type&#x548C;&#x6307;&#x5411;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5B9E;&#x73B0;&#x7684;&#x6307;&#x9488;*ptr&#x3002;</p>
+<pre><code class="lang-C">   <span class="hljs-function">robj *<span class="hljs-title">createObject</span><span class="hljs-params">(<span class="hljs-keyword">int</span> type, <span class="hljs-keyword">void</span> *ptr)</span> </span>{
+       robj *o = zmalloc(<span class="hljs-keyword">sizeof</span>(*o));
+       o-&gt;type = type;
+       o-&gt;ptr = ptr;
+       ...
+       <span class="hljs-keyword">return</span> o;
+   }
+</code></pre>
+<p>   &#x5BF9;&#x4E8E;&#x91CA;&#x653E;&#x51FD;&#x6570;&#x6765;&#x8BF4;&#xFF0C;&#x5B83;&#x662F;&#x521B;&#x5EFA;&#x51FD;&#x6570;&#x7684;&#x53CD;&#x8FC7;&#x7A0B;&#xFF0C;&#x662F;&#x7528;zfree&#x547D;&#x4EE4;&#x628A;&#x65B0;&#x7ED3;&#x6784;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x91CA;&#x653E;&#x6389;&#x3002;</p>
+<p><strong>4. &#x5F00;&#x53D1;&#x65B0;&#x7C7B;&#x578B;&#x7684;&#x547D;&#x4EE4;&#x64CD;&#x4F5C;</strong></p>
 <ol>
-<li>&#x5B9A;&#x4E49;&#x65B0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x5E95;&#x5C42;&#x7ED3;&#x6784;</li>
-<li>&#x5728;RedisObject&#x7684;type&#x5C5E;&#x6027;&#x4E2D;&#xFF0C;&#x589E;&#x52A0;&#x8FD9;&#x4E2A;&#x65B0;&#x7C7B;&#x578B;&#x7684;&#x5B9A;&#x4E49;</li>
-<li>&#x5F00;&#x53D1;&#x65B0;&#x7C7B;&#x578B;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x91CA;&#x653E;&#x51FD;&#x6570;</li>
-<li>&#x5F00;&#x53D1;&#x65B0;&#x7C7B;&#x578B;&#x7684;&#x547D;&#x4EE4;&#x64CD;&#x4F5C;</li>
+<li><p>&#x5728;t_newtype.c&#x6587;&#x4EF6;&#x4E2D;&#x589E;&#x52A0;&#x547D;&#x4EE4;&#x64CD;&#x4F5C;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;ntinsertCommand&#x51FD;&#x6570;&#xFF0C;&#x7531;&#x5B83;&#x5B9E;&#x73B0;&#x5BF9;NewTypeObject&#x5355;&#x5411;&#x94FE;&#x8868;&#x7684;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code class="lang-C">  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ntinsertCommand</span><span class="hljs-params">(client *c)</span></span>{
+      <span class="hljs-comment">//&#x57FA;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5B9E;&#x73B0;&#x5728;NewTypeObject&#x94FE;&#x8868;&#x5934;&#x63D2;&#x5165;&#x5143;&#x7D20;</span>
+  }
+</code></pre>
+</li>
+<li><p>&#x5728;server.h&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x58F0;&#x660E;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x4EE5;&#x4FBF;&#x5728;server.c&#x6587;&#x4EF6;&#x5F15;&#x7528;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-C">  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ntinsertCommand</span><span class="hljs-params">(client *c)</span>
+</span></code></pre>
+</li>
+<li><p>&#x5728;server.c&#x6587;&#x4EF6;&#x4E2D;&#x7684;redisCommandTable&#x91CC;&#x9762;&#xFF0C;&#x628A;&#x65B0;&#x589E;&#x547D;&#x4EE4;&#x548C;&#x5B9E;&#x73B0;&#x51FD;&#x6570;&#x5173;&#x8054;&#x8D77;&#x6765;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x65B0;&#x589E;&#x7684;ntinsert&#x547D;&#x4EE4;&#x7531;ntinsertCommand&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x7528;ntinsert&#x547D;&#x4EE4;&#x7ED9;NewTypeObject&#x6570;&#x636E;&#x7C7B;&#x578B;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x4E86;&#x3002;</p>
+<pre><code class="lang-C">  <span class="hljs-keyword">struct</span> redisCommand redisCommandTable[] = { 
+      ...
+      {<span class="hljs-string">&quot;ntinsert&quot;</span>,ntinsertCommand,<span class="hljs-number">2</span>,<span class="hljs-string">&quot;m&quot;</span>,...}
+  }
+</code></pre>
+</li>
 </ol>
+<p>&#x6B64;&#x65F6;&#xFF0C;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;NewTypeObject&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x57FA;&#x672C;&#x7684;&#x547D;&#x4EE4;&#x64CD;&#x4F5C;&#x4E86;&#x3002;&#x5982;&#x679C;&#x8FD8;&#x5E0C;&#x671B;&#x65B0;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x80FD;&#x88AB;&#x6301;&#x4E45;&#x5316;&#x4FDD;&#x5B58;&#xFF0C;&#x9700;&#x8981;&#x5728;Redis&#x7684;RDB&#x548C;AOF&#x6A21;&#x5757;&#x4E2D;&#x589E;&#x52A0;&#x5BF9;&#x65B0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x6301;&#x4E45;&#x5316;&#x4FDD;&#x5B58;&#x7684;&#x4EE3;&#x7801;</p>
 
                                 
                                 </section>
@@ -448,7 +512,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2. 自定义数据类型","level":"1.2.4.2","depth":3,"next":{"title":"3. 时间序列数据","level":"1.2.4.3","depth":3,"path":"redis_core/practice/datetime.md","ref":"redis_core/practice/datetime.md","articles":[]},"previous":{"title":"1. 集合统计","level":"1.2.4.1","depth":3,"path":"redis_core/practice/statistics.md","ref":"redis_core/practice/statistics.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","mermaid-gb3","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"张鹏","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","gitbook":"*","description":"通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。"},"file":{"path":"redis_core/practice/new_type.md","mtime":"2022-04-06T02:14:25.327Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-06T02:16:58.947Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2. 自定义数据类型","level":"1.2.4.2","depth":3,"next":{"title":"3. 时间序列数据","level":"1.2.4.3","depth":3,"path":"redis_core/practice/datetime.md","ref":"redis_core/practice/datetime.md","articles":[]},"previous":{"title":"1. 集合统计","level":"1.2.4.1","depth":3,"path":"redis_core/practice/statistics.md","ref":"redis_core/practice/statistics.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","mermaid-gb3","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"张鹏","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","gitbook":"*","description":"通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。"},"file":{"path":"redis_core/practice/new_type.md","mtime":"2022-04-06T02:57:07.208Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-06T03:19:22.801Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
