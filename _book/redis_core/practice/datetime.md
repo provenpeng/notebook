@@ -39,3 +39,54 @@
 
 RedisTimeSeries是redis的一个扩展模块，支持直接对数据进行按时间范围的聚合计算
 
+因为RedisTimeSeries不属于Redis的内建功能模块，在使用时，我们需要先把它的源码单独编译成动态链接库redistimeseries.so，再使用loadmodule命令进行加载，如下所示：
+
+```bash
+loadmodule redistimeseries.so
+```
+
+使用示例如下：
+
+```bash
+# 创建一个key为device:temperature、数据有效期为600s的时间序列数据集合,设置了一个标签属性{device_id:1}
+TS.CREATE device:temperature RETENTION 600000 LABELS device_id 1
+OK
+
+# 添加数据
+TS.ADD device:temperature 1596416700 25.1
+1596416700
+
+# 读取最新数据
+TS.GET device:temperature 
+25.1
+
+# 按标签过滤查询集合
+TS.MGET FILTER device_id!=2 
+1) 1) "device:temperature:1"
+   2) (empty list or set)
+   3) 1) (integer) 1596417000
+      2) "25.3"
+2) 1) "device:temperature:3"
+   2) (empty list or set)
+   3) 1) (integer) 1596417000
+      2) "29.5"
+3) 1) "device:temperature:4"
+   2) (empty list or set)
+   3) 1) (integer) 1596417000
+      2) "30.1"
+
+# 按照每180s的时间窗口，对时间段内的数据进行均值计算
+TS.MGET FILTER device_id!=2 
+1) 1) "device:temperature:1"
+   2) (empty list or set)
+   3) 1) (integer) 1596417000
+      2) "25.3"
+2) 1) "device:temperature:3"
+   2) (empty list or set)
+   3) 1) (integer) 1596417000
+      2) "29.5"
+3) 1) "device:temperature:4"
+   2) (empty list or set)
+   3) 1) (integer) 1596417000
+      2) "30.1"
+```

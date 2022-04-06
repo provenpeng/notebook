@@ -1,12 +1,12 @@
 require([
-    'gitbook',
-    'jquery'
+    "gitbook",
+    "jquery"
 ], function(gitbook, $) {
     // Define global search engine
     function LunrSearchEngine() {
         this.index = null;
         this.store = {};
-        this.name = 'LunrSearchEngine';
+        this.name = "LunrSearchEngine";
     }
 
     // Initialize lunr by fetching the search index
@@ -14,7 +14,7 @@ require([
         var that = this;
         var d = $.Deferred();
 
-        $.getJSON(gitbook.state.basePath+'/search_index.json')
+        $.getJSON(gitbook.state.basePath+"/search_index.json")
         .then(function(data) {
             // eslint-disable-next-line no-undef
             that.index = lunr.Index.load(data.index);
@@ -50,7 +50,7 @@ require([
     };
 
     // Set gitbook research
-    gitbook.events.bind('start', function(e, config) {
+    gitbook.events.bind("start", function(e, config) {
         var engine = gitbook.search.getEngine();
         if (!engine) {
             gitbook.search.setEngine(LunrSearchEngine, config);

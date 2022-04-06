@@ -1,7 +1,7 @@
 require([
-  'gitbook'
+  "gitbook"
 ], function (gitbook) {
-  gitbook.events.bind('page.change', function () {
+  gitbook.events.bind("page.change", function () {
     mermaid.init();
   });
 });
