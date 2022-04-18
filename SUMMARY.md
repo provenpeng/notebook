@@ -1,4 +1,4 @@
-# Summary
+# 目录
 
 * [简介](README.md)
 * [redis核心技术](redis_core/README.md)
@@ -17,3 +17,4 @@
     * [2. 自定义数据类型](redis_core/practice/new_type.md)
     * [3. 时间序列数据](redis_core/practice/datetime.md)
     * [4. 消息队列](redis_core/practice/msg_queue.md)
+    * [5. 影响性能的因素](redis_core/practice/slow_reason.md)
