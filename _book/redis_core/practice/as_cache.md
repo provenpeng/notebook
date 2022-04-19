@@ -316,13 +316,11 @@ if (r < p) counter++;
 在一些场景下，有些数据在短时间内被大量访问后就不会再被访问了，因此，Redis的LFU策略还设计了一个counter值的衰减机制，使用衰减因子配置项**lfu_decay_time**来控制访问次数的衰减：
 
 ```C
-double diff = (nowTime - lastTime).toMinute();
-double v = diff / server.lfu_decay_time;
-counter -= v;
+diff = (nowTime - lastTime).toMinute()
+v = diff / lfu_decay_time
 // v即是数据counter要衰减的值
 ```
 
 由此可见，lfu_decay_time越大，衰减效果越弱。在业务系统中，如果有短时高频访问的数据的话，建议把lfu_decay_time值设置为1，这样LFU策略在它们不再被访问时，较快的衰减他们的访问次数，避免缓存污染。
 
 ## 六、Pika-基于SSD实现大容量Redis
-
