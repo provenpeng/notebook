@@ -1,0 +1,619 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1. 集合统计 · 学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="张鹏">
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="new_type.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    redis核心技术
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../data_structure/">
+            
+                <a href="../data_structure/">
+            
+                    
+                    一、数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../data_structure/data_type.html">
+            
+                <a href="../data_structure/data_type.html">
+            
+                    
+                    1. 数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../data_structure/global_hash.html">
+            
+                <a href="../data_structure/global_hash.html">
+            
+                    
+                    2. 全局hash表
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../persistence/">
+            
+                <a href="../persistence/">
+            
+                    
+                    二、持久化机制
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../persistence/aof.html">
+            
+                <a href="../persistence/aof.html">
+            
+                    
+                    1. AOF日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../persistence/rdb.html">
+            
+                <a href="../persistence/rdb.html">
+            
+                    
+                    2. RDB快照
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../master-slave/">
+            
+                <a href="../master-slave/">
+            
+                    
+                    三、主从集群
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../master-slave/data_sync.html">
+            
+                <a href="../master-slave/data_sync.html">
+            
+                    
+                    1. 主从数据同步
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="../master-slave/sentry.html">
+            
+                <a href="../master-slave/sentry.html">
+            
+                    
+                    2. 哨兵机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="../master-slave/sentry_cluster.html">
+            
+                <a href="../master-slave/sentry_cluster.html">
+            
+                    
+                    3. 哨兵集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    四、实践
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.4.1" data-path="statistics.html">
+            
+                <a href="statistics.html">
+            
+                    
+                    1. 集合统计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="new_type.html">
+            
+                <a href="new_type.html">
+            
+                    
+                    2. 自定义数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="datetime.html">
+            
+                <a href="datetime.html">
+            
+                    
+                    3. 时间序列数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="msg_queue.html">
+            
+                <a href="msg_queue.html">
+            
+                    
+                    4. 消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="slow_reason.html">
+            
+                <a href="slow_reason.html">
+            
+                    
+                    5. 影响性能的因素
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.6" data-path="as_cache.html">
+            
+                <a href="as_cache.html">
+            
+                    
+                    6. Redis作为缓存的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.7" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    7. 并发控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.8" data-path="master_slave.html">
+            
+                <a href="master_slave.html">
+            
+                    
+                    8. 主从复制的坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >1. 集合统计</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x96C6;&#x5408;&#x7EDF;&#x8BA1;">&#x96C6;&#x5408;&#x7EDF;&#x8BA1;</h1>
+<h2 id="&#x805A;&#x5408;&#x7EDF;&#x8BA1;">&#x805A;&#x5408;&#x7EDF;&#x8BA1;</h2>
+<p>&#x9700;&#x8981;&#x5BF9;&#x591A;&#x4E2A;&#x96C6;&#x5408;&#x8FDB;&#x884C;&#x805A;&#x5408;&#x8BA1;&#x7B97;&#x65F6;&#xFF0C;Set&#x7C7B;&#x578B;&#x4F1A;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x4E0D;&#x9519;&#x7684;&#x9009;&#x62E9;&#x3002;&#x4F46;&#x662F;&#x6709;&#x4E00;&#x4E2A;&#x6F5C;&#x5728;&#x7684;&#x98CE;&#x9669;&#xFF1A;Set&#x7684;&#x5DEE;&#x96C6;&#x3001;&#x5E76;&#x96C6;&#x548C;&#x4EA4;&#x96C6;&#x7684;&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#x8F83;&#x9AD8;&#xFF0C;&#x56E0;&#x6B64;&#x6570;&#x636E;&#x91CF;&#x5F88;&#x5927;&#x65F6;&#x76F4;&#x63A5;&#x6267;&#x884C;&#x8FD9;&#x4E9B;&#x8BA1;&#x7B97;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4;redis&#x5B9E;&#x4F8B;&#x963B;&#x585E;&#x3002;</p>
+<p>&#x5EFA;&#x8BAE;&#xFF1A;<strong>&#x53EF;&#x4EE5;&#x4ECE;&#x4E3B;&#x4ECE;&#x96C6;&#x7FA4;&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x4ECE;&#x5E93;&#xFF0C;&#x8BA9;&#x5B83;&#x4E13;&#x95E8;&#x8D1F;&#x8D23;&#x805A;&#x5408;&#x8BA1;&#x7B97;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x628A;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x6765;&#x5B8C;&#x6210;&#x805A;&#x5408;&#x7EDF;&#x8BA1;</strong></p>
+<h2 id="&#x6392;&#x5E8F;&#x7EDF;&#x8BA1;">&#x6392;&#x5E8F;&#x7EDF;&#x8BA1;</h2>
+<p>List&#x662F;&#x6309;&#x7167;&#x5143;&#x7D20;&#x8FDB;&#x5165;List&#x7684;&#x987A;&#x5E8F;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x7684;&#xFF0C;&#x800C;Sorted Set&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5143;&#x7D20;&#x7684;&#x6743;&#x91CD;&#x6765;&#x6392;&#x5E8F;</p>
+<ul>
+<li>List&#xFF1A;&#x5BF9;&#x6BD4;&#x65B0;&#x5143;&#x7D20;&#x63D2;&#x5165;&#x524D;&#x540E;&#xFF0C;List&#x76F8;&#x540C;&#x4F4D;&#x7F6E;&#x4E0A;&#x7684;&#x5143;&#x7D20;&#x5C31;&#x4F1A;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x7528;LRANGE&#x8BFB;&#x53D6;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x8BFB;&#x5230;&#x65E7;&#x5143;&#x7D20;</li>
+<li>Sorted Set&#xFF1A;&#x5982;&#x679C;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x9891;&#x7E41;&#x6216;&#x8005;&#x9700;&#x8981;&#x5206;&#x9875;&#x663E;&#x793A;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F60;&#x4F18;&#x5148;&#x8003;&#x8651;&#x4F7F;&#x7528;Sorted Set&#x3002;</li>
+</ul>
+<h2 id="&#x4E8C;&#x503C;&#x72B6;&#x6001;&#x7EDF;&#x8BA1;">&#x4E8C;&#x503C;&#x72B6;&#x6001;&#x7EDF;&#x8BA1;</h2>
+<p>&#x53EF;&#x4EE5;&#x9009;&#x62E9;Bitmap&#x3002;&#x8FD9;&#x662F;Redis&#x63D0;&#x4F9B;&#x7684;&#x6269;&#x5C55;&#x6570;&#x636E;&#x7C7B;&#x578B;</p>
+<p>Bitmap&#x672C;&#x8EAB;&#x662F;&#x7528;String&#x7C7B;&#x578B;&#x4F5C;&#x4E3A;&#x5E95;&#x5C42;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x5B9E;&#x73B0;&#x7684;&#x4E00;&#x79CD;&#x7EDF;&#x8BA1;&#x4E8C;&#x503C;&#x72B6;&#x6001;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;String&#x7C7B;&#x578B;&#x662F;&#x4F1A;&#x4FDD;&#x5B58;&#x4E3A;&#x4E8C;&#x8FDB;&#x5236;&#x7684;&#x5B57;&#x8282;&#x6570;&#x7EC4;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;Redis&#x5C31;&#x628A;&#x5B57;&#x8282;&#x6570;&#x7EC4;&#x7684;&#x6BCF;&#x4E2A;bit&#x4F4D;&#x5229;&#x7528;&#x8D77;&#x6765;&#xFF0C;&#x7528;&#x6765;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x4E8C;&#x503C;&#x72B6;&#x6001;&#x3002;&#x53EF;&#x4EE5;&#x628A;Bitmap&#x770B;&#x4F5C;&#x662F;&#x4E00;&#x4E2A;bit&#x6570;&#x7EC4;&#x3002;</p>
+<h2 id="&#x57FA;&#x6570;&#x7EDF;&#x8BA1;">&#x57FA;&#x6570;&#x7EDF;&#x8BA1;</h2>
+<p>&#x57FA;&#x6570;&#x7EDF;&#x8BA1;&#x5C31;&#x662F;&#x6307;&#x7EDF;&#x8BA1;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x4E0D;&#x91CD;&#x590D;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x3002;</p>
+<p>&#x7528;Hash&#x548C;Set&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#xFF0C;&#x4F46;&#x662F;&#x6570;&#x636E;&#x91CF;&#x5F88;&#x5927;&#x65F6;&#xFF0C;&#x4F1A;&#x6D88;&#x8017;&#x5F88;&#x591A;&#x7A7A;&#x95F4;&#x3002;</p>
+<p>HyperLogLog&#x662F;&#x4E00;&#x79CD;&#x7528;&#x4E8E;&#x7EDF;&#x8BA1;&#x57FA;&#x6570;&#x7684;&#x6570;&#x636E;&#x96C6;&#x5408;&#x7C7B;&#x578B;</p>
+<ul>
+<li>&#x4F18;&#x52BF;&#xFF1A;&#x5F53;&#x96C6;&#x5408;&#x5143;&#x7D20;&#x6570;&#x91CF;&#x975E;&#x5E38;&#x591A;&#x65F6;&#xFF0C;&#x5B83;&#x8BA1;&#x7B97;&#x57FA;&#x6570;&#x6240;&#x9700;&#x7684;&#x7A7A;&#x95F4;&#x603B;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x5F88;&#x5C0F;&#x3002;</li>
+<li>&#x52A3;&#x52BF;&#xFF1A;&#x7EDF;&#x8BA1;&#x7ED3;&#x679C;&#x662F;&#x6709;&#x4E00;&#x5B9A;&#x8BEF;&#x5DEE;&#xFF0C;&#x6807;&#x51C6;&#x8BEF;&#x7B97;&#x7387;&#x662F;0.81%</li>
+</ul>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x6570;&#x636E;&#x7C7B;&#x578B;</th>
+<th style="text-align:center">&#x805A;&#x5408;&#x7EDF;&#x8BA1;</th>
+<th style="text-align:center">&#x6392;&#x5E8F;&#x7EDF;&#x8BA1;</th>
+<th style="text-align:center">&#x4E8C;&#x503C;&#x7EDF;&#x8BA1;</th>
+<th style="text-align:center">&#x57FA;&#x6570;&#x7EDF;&#x8BA1;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Set</td>
+<td style="text-align:center">&#x652F;&#x6301;&#x5DEE;&#x96C6;&#x3001;&#x4EA4;&#x96C6;&#x3001;&#x5E76;&#x96C6;&#x8BA1;&#x7B97;</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x7CBE;&#x786E;&#x7EDF;&#x8BA1;&#xFF0C;&#x5927;&#x6570;&#x636E;&#x91CF;&#x65F6;&#xFF0C;&#x6548;&#x7387;&#x4F4E;&#xFF0C;&#x5185;&#x5B58;&#x5F00;&#x9500;&#x5927;</td>
+</tr>
+<tr>
+<td style="text-align:center">Sorted Set</td>
+<td style="text-align:center">&#x652F;&#x6301;&#x4EA4;&#x96C6;&#x3001;&#x5E76;&#x96C6;&#x8BA1;&#x7B97;</td>
+<td style="text-align:center">&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x7CBE;&#x786E;&#x7EDF;&#x8BA1;&#xFF0C;&#x5927;&#x6570;&#x636E;&#x91CF;&#x65F6;&#xFF0C;&#x6548;&#x7387;&#x4F4E;&#xFF0C;&#x5185;&#x5B58;&#x5F00;&#x9500;&#x5927;</td>
+</tr>
+<tr>
+<td style="text-align:center">Hash</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x7CBE;&#x786E;&#x7EDF;&#x8BA1;&#xFF0C;&#x5927;&#x6570;&#x636E;&#x91CF;&#x65F6;&#xFF0C;&#x6548;&#x7387;&#x4F4E;&#xFF0C;&#x5185;&#x5B58;&#x5F00;&#x9500;&#x5927;</td>
+</tr>
+<tr>
+<td style="text-align:center">List</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;&#x3001;&#x5143;&#x7D20;&#x6CA1;&#x6709;&#x53BB;&#x91CD;</td>
+</tr>
+<tr>
+<td style="text-align:center">Bitmap</td>
+<td style="text-align:center">&#x4E0E;&#x3001;&#x6216;&#x3001;&#x5F02;&#x6216;&#x8BA1;&#x7B97;</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x652F;&#x6301;&#xFF0C;&#x5927;&#x6570;&#x636E;&#x91CF;&#x65F6;&#xFF0C;&#x6548;&#x7387;&#x9AD8;&#xFF0C;&#x7701;&#x5185;&#x5B58;</td>
+<td style="text-align:center">&#x7CBE;&#x786E;&#x7EDF;&#x8BA1;&#xFF0C;&#x5185;&#x5B58;&#x5F00;&#x9500;&#x5927;&#x4E8E;HyperLogLog</td>
+</tr>
+<tr>
+<td style="text-align:center">HyperLogLog</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:center">&#x6982;&#x7387;&#x7EDF;&#x8BA1;&#x3001;&#x5927;&#x6570;&#x636E;&#x91CF;&#x65F6;&#xFF0C;&#x5F88;&#x8282;&#x7701;&#x5185;&#x5B58;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 四、实践">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="new_type.html" class="navigation navigation-next " aria-label="Next page: 2. 自定义数据类型">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1. 集合统计","level":"1.2.4.1","depth":3,"next":{"title":"2. 自定义数据类型","level":"1.2.4.2","depth":3,"path":"redis_core/practice/new_type.md","ref":"redis_core/practice/new_type.md","articles":[]},"previous":{"title":"四、实践","level":"1.2.4","depth":2,"path":"redis_core/practice/README.md","ref":"redis_core/practice/README.md","articles":[{"title":"1. 集合统计","level":"1.2.4.1","depth":3,"path":"redis_core/practice/statistics.md","ref":"redis_core/practice/statistics.md","articles":[]},{"title":"2. 自定义数据类型","level":"1.2.4.2","depth":3,"path":"redis_core/practice/new_type.md","ref":"redis_core/practice/new_type.md","articles":[]},{"title":"3. 时间序列数据","level":"1.2.4.3","depth":3,"path":"redis_core/practice/datetime.md","ref":"redis_core/practice/datetime.md","articles":[]},{"title":"4. 消息队列","level":"1.2.4.4","depth":3,"path":"redis_core/practice/msg_queue.md","ref":"redis_core/practice/msg_queue.md","articles":[]},{"title":"5. 影响性能的因素","level":"1.2.4.5","depth":3,"path":"redis_core/practice/slow_reason.md","ref":"redis_core/practice/slow_reason.md","articles":[]},{"title":"6. Redis作为缓存的问题","level":"1.2.4.6","depth":3,"path":"redis_core/practice/as_cache.md","ref":"redis_core/practice/as_cache.md","articles":[]},{"title":"7. 并发控制","level":"1.2.4.7","depth":3,"path":"redis_core/practice/concurrency.md","ref":"redis_core/practice/concurrency.md","articles":[]},{"title":"8. 主从复制的坑","level":"1.2.4.8","depth":3,"path":"redis_core/practice/master_slave.md","ref":"redis_core/practice/master_slave.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","mermaid-gb3"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters":{},"mermaid-gb3":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"张鹏","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","gitbook":"*","description":"通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。"},"file":{"path":"redis_core/practice/statistics.md","mtime":"2022-04-19T11:07:18.817Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-20T13:57:38.354Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mermaid-gb3/book/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    <script src="../../gitbook/gitbook-plugin-mermaid-gb3/mermaid/mermaid.min.js"></script>
+
+    </body>
+</html>
+
