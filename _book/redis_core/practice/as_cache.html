@@ -69,6 +69,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="concurrency.html" />
+    
     
     <link rel="prev" href="slow_reason.html" />
     
@@ -359,6 +361,32 @@
             
                     
                     6. Redis作为缓存的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.7" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    7. 并发控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.8" data-path="master_slave.html">
+            
+                <a href="master_slave.html">
+            
+                    
+                    8. 主从复制的坑
             
                 </a>
             
@@ -754,8 +782,9 @@ D--&gt;allkeys-lfu
 <p>&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684;lfu_log_factor&#x914D;&#x7F6E;&#x9879;&#xFF0C;&#x6765;&#x63A7;&#x5236;&#x8BA1;&#x6570;&#x5668;&#x503C;&#x589E;&#x52A0;&#x7684;&#x901F;&#x5EA6;&#xFF0C;&#x907F;&#x514D;counter&#x503C;&#x5F88;&#x5FEB;&#x5230;255</p>
 <p><a href="https://redis.io/docs/manual/eviction/" target="_blank">redis&#x5B98;&#x7F51;</a> &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x5F20;&#x8868;&#xFF0C;&#x8BB0;&#x5F55;&#x4E86;&#x5F53;lfu_log_factor&#x53D6;&#x4E0D;&#x540C;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5728;&#x4E0D;&#x540C;&#x5B9E;&#x9645;&#x8BBF;&#x95EE;&#x6B21;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8BA1;&#x6570;&#x5668;&#x7684;&#x662F;&#x662F;&#x5982;&#x4F55;&#x8BA9;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x5B9E;&#x9645;&#x4E00;&#x822C;&#x53EF;&#x4EE5;&#x5C06;lfu_log_factor&#x53D6;&#x503C;&#x4E3A;10&#xFF1B;</p>
 <p>&#x5728;&#x4E00;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#xFF0C;&#x6709;&#x4E9B;&#x6570;&#x636E;&#x5728;&#x77ED;&#x65F6;&#x95F4;&#x5185;&#x88AB;&#x5927;&#x91CF;&#x8BBF;&#x95EE;&#x540E;&#x5C31;&#x4E0D;&#x4F1A;&#x518D;&#x88AB;&#x8BBF;&#x95EE;&#x4E86;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;Redis&#x7684;LFU&#x7B56;&#x7565;&#x8FD8;&#x8BBE;&#x8BA1;&#x4E86;&#x4E00;&#x4E2A;counter&#x503C;&#x7684;&#x8870;&#x51CF;&#x673A;&#x5236;&#xFF0C;&#x4F7F;&#x7528;&#x8870;&#x51CF;&#x56E0;&#x5B50;&#x914D;&#x7F6E;&#x9879;<strong>lfu_decay_time</strong>&#x6765;&#x63A7;&#x5236;&#x8BBF;&#x95EE;&#x6B21;&#x6570;&#x7684;&#x8870;&#x51CF;&#xFF1A;</p>
-<pre><code class="lang-C">diff = (nowTime - lastTime).toMinute()
-v = diff / lfu_decay_time
+<pre><code class="lang-C"><span class="hljs-keyword">double</span> diff = (nowTime - lastTime).toMinute();
+<span class="hljs-keyword">double</span> v = diff / server.lfu_decay_time;
+counter -= v;
 <span class="hljs-comment">// v&#x5373;&#x662F;&#x6570;&#x636E;counter&#x8981;&#x8870;&#x51CF;&#x7684;&#x503C;</span>
 </code></pre>
 <p>&#x7531;&#x6B64;&#x53EF;&#x89C1;&#xFF0C;lfu_decay_time&#x8D8A;&#x5927;&#xFF0C;&#x8870;&#x51CF;&#x6548;&#x679C;&#x8D8A;&#x5F31;&#x3002;&#x5728;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x77ED;&#x65F6;&#x9AD8;&#x9891;&#x8BBF;&#x95EE;&#x7684;&#x6570;&#x636E;&#x7684;&#x8BDD;&#xFF0C;&#x5EFA;&#x8BAE;&#x628A;lfu_decay_time&#x503C;&#x8BBE;&#x7F6E;&#x4E3A;1&#xFF0C;&#x8FD9;&#x6837;LFU&#x7B56;&#x7565;&#x5728;&#x5B83;&#x4EEC;&#x4E0D;&#x518D;&#x88AB;&#x8BBF;&#x95EE;&#x65F6;&#xFF0C;&#x8F83;&#x5FEB;&#x7684;&#x8870;&#x51CF;&#x4ED6;&#x4EEC;&#x7684;&#x8BBF;&#x95EE;&#x6B21;&#x6570;&#xFF0C;&#x907F;&#x514D;&#x7F13;&#x5B58;&#x6C61;&#x67D3;&#x3002;</p>
@@ -787,10 +816,14 @@ v = diff / lfu_decay_time
 
             
                 
-                <a href="slow_reason.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 5. 影响性能的因素">
+                <a href="slow_reason.html" class="navigation navigation-prev " aria-label="Previous page: 5. 影响性能的因素">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="concurrency.html" class="navigation navigation-next " aria-label="Next page: 7. 并发控制">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -799,7 +832,7 @@ v = diff / lfu_decay_time
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6. Redis作为缓存的问题","level":"1.2.4.6","depth":3,"previous":{"title":"5. 影响性能的因素","level":"1.2.4.5","depth":3,"path":"redis_core/practice/slow_reason.md","ref":"redis_core/practice/slow_reason.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","mermaid-gb3","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"张鹏","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","gitbook":"*","description":"通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。"},"file":{"path":"redis_core/practice/as_cache.md","mtime":"2022-04-19T07:52:38.615Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-19T07:52:42.014Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6. Redis作为缓存的问题","level":"1.2.4.6","depth":3,"next":{"title":"7. 并发控制","level":"1.2.4.7","depth":3,"path":"redis_core/practice/concurrency.md","ref":"redis_core/practice/concurrency.md","articles":[]},"previous":{"title":"5. 影响性能的因素","level":"1.2.4.5","depth":3,"path":"redis_core/practice/slow_reason.md","ref":"redis_core/practice/slow_reason.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","mermaid-gb3","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"张鹏","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","gitbook":"*","description":"通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。"},"file":{"path":"redis_core/practice/as_cache.md","mtime":"2022-04-20T04:58:55.712Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-20T09:28:06.442Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

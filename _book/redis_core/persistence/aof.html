@@ -368,6 +368,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.4.7" data-path="../practice/concurrency.html">
+            
+                <a href="../practice/concurrency.html">
+            
+                    
+                    7. 并发控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.8" data-path="../practice/master_slave.html">
+            
+                <a href="../practice/master_slave.html">
+            
+                    
+                    8. 主从复制的坑
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -441,37 +467,13 @@
 <li>&#x5F53;redis&#x521A;&#x6267;&#x884C;&#x5B8C;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#xFF0C;&#x8FD8;&#x6765;&#x4E0D;&#x53CA;&#x8BB0;&#x5F55;&#x65E5;&#x5FD7;&#x5C31;&#x5B95;&#x673A;&#x4E86;&#xFF0C;&#x90A3;&#x8BE5;&#x547D;&#x4EE4;&#x548C;&#x76F8;&#x5E94;&#x7684;&#x6570;&#x636E;&#x6709;&#x4E22;&#x5931;&#x98CE;&#x9669;</li>
 <li>AOF&#x867D;&#x7136;&#x907F;&#x514D;&#x4E86;&#x5BF9;&#x5F53;&#x524D;&#x547D;&#x4EE4;&#x7684;&#x963B;&#x585E;&#xFF0C;&#x4F46;&#x53EF;&#x80FD;&#x4F1A;&#x963B;&#x585E;&#x4E0B;&#x4E2A;&#x547D;&#x4EE4;&#x3002;&#x56E0;&#x4E3A;AOF&#x65E5;&#x5FD7;&#xFF08;&#x843D;&#x76D8;&#xFF09;&#x4E5F;&#x662F;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x7684;</li>
 </ol>
-<p>&#x5199;&#x540E;&#x65E5;&#x5FD7;&#x7684;&#x98CE;&#x9669;&#x5747;&#x6765;&#x81EA;&#x4E8E;AOF&#x5199;&#x5165;&#x78C1;&#x76D8;&#x7684;&#x65F6;&#x673A;&#xFF0C;redis&#x63D0;&#x4F9B;&#x4E86;&#x5982;&#x4E0B;3&#x79CD;&#x5199;&#x56DE;&#x7B56;&#x7565;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;<em>appendfsync</em>&#x914D;&#x7F6E;&#x9879;&#x8BBE;&#x7F6E;&#xFF1A;</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">&#x914D;&#x7F6E;&#x9879;</th>
-<th style="text-align:center">&#x5199;&#x56DE;&#x65F6;&#x673A;</th>
-<th style="text-align:center">&#x4F18;&#x70B9;</th>
-<th style="text-align:center">&#x7F3A;&#x70B9;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Always</td>
-<td style="text-align:center">&#x540C;&#x6B65;&#x5199;&#x56DE;</td>
-<td style="text-align:center">&#x53EF;&#x9760;&#x6027;&#x9AD8;&#xFF0C;&#x6570;&#x636E;&#x57FA;&#x672C;&#x4E0D;&#x4E22;&#x5931;</td>
-<td style="text-align:center">&#x6BCF;&#x4E2A;&#x5199;&#x547D;&#x4EE4;&#x90FD;&#x8981;&#x843D;&#x76D8;&#xFF0C;&#x6027;&#x80FD;&#x5F71;&#x54CD;&#x8F83;&#x5927;</td>
-</tr>
-<tr>
-<td style="text-align:center">Everysec</td>
-<td style="text-align:center">&#x6BCF;&#x79D2;&#x5199;&#x56DE;</td>
-<td style="text-align:center">&#x6027;&#x80FD;&#x9002;&#x4E2D;</td>
-<td style="text-align:center">&#x5B95;&#x673A;&#x65F6;&#x4E22;&#x5931;1&#x79D2;&#x6570;&#x636E;</td>
-</tr>
-<tr>
-<td style="text-align:center">No</td>
-<td style="text-align:center">&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x63A7;&#x5236;&#x5199;&#x56DE;</td>
-<td style="text-align:center">&#x6027;&#x80FD;&#x597D;</td>
-<td style="text-align:center">&#x5B95;&#x673A;&#x65F6;&#x4E22;&#x5931;&#x6570;&#x636E;&#x8F83;&#x591A;</td>
-</tr>
-</tbody>
-</table>
+<p>&#x5199;&#x540E;&#x65E5;&#x5FD7;&#x7684;&#x98CE;&#x9669;&#x5747;&#x6765;&#x81EA;&#x4E8E;AOF&#x5199;&#x5165;&#x78C1;&#x76D8;&#x7684;&#x65F6;&#x673A;&#xFF0C;redis&#x63D0;&#x4F9B;&#x4E86;&#x5982;&#x4E0B;3&#x79CD;&#x5199;&#x56DE;&#x7B56;&#x7565;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;<em>appendfsync</em>&#x914D;&#x7F6E;&#x9879;&#x8BBE;&#x7F6E;&#xFF1A;
+&#xB7;
+&#x914D;&#x7F6E;&#x9879;|&#x5199;&#x56DE;&#x65F6;&#x673A;|&#x4F18;&#x70B9;|&#x7F3A;&#x70B9;
+:--:|:--:|:--:|:--:
+Always|&#x540C;&#x6B65;&#x5199;&#x56DE;|&#x53EF;&#x9760;&#x6027;&#x9AD8;&#xFF0C;&#x6570;&#x636E;&#x57FA;&#x672C;&#x4E0D;&#x4E22;&#x5931;|&#x6BCF;&#x4E2A;&#x5199;&#x547D;&#x4EE4;&#x90FD;&#x8981;&#x843D;&#x76D8;&#xFF0C;&#x6027;&#x80FD;&#x5F71;&#x54CD;&#x8F83;&#x5927;
+Everysec|&#x6BCF;&#x79D2;&#x5199;&#x56DE;|&#x6027;&#x80FD;&#x9002;&#x4E2D;|&#x5B95;&#x673A;&#x65F6;&#x4E22;&#x5931;1&#x79D2;&#x6570;&#x636E;
+No|&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x63A7;&#x5236;&#x5199;&#x56DE;|&#x6027;&#x80FD;&#x597D;|&#x5B95;&#x673A;&#x65F6;&#x4E22;&#x5931;&#x6570;&#x636E;&#x8F83;&#x591A;</p>
 <h2 id="&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x592A;&#x5927;&#x4E86;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x2014;&#x2014;aof&#x91CD;&#x5199;&#x673A;&#x5236;">&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x592A;&#x5927;&#x4E86;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x2014;&#x2014;AOF&#x91CD;&#x5199;&#x673A;&#x5236;</h2>
 <p>AOF&#x662F;&#x4EE5;&#x8FFD;&#x52A0;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x9010;&#x4E00;&#x8BB0;&#x5F55;&#x6536;&#x5230;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#x5BF9;&#x88AB;&#x591A;&#x6761;&#x5199;&#x547D;&#x4EE4;&#x53CD;&#x590D;&#x4FEE;&#x6539;&#x65F6;&#xFF0C;AOF&#x6587;&#x4EF6;&#x4F1A;&#x8BB0;&#x5F55;&#x76F8;&#x5E94;&#x7684;&#x591A;&#x6761;&#x547D;&#x4EE4;&#xFF0C;&#x5BFC;&#x81F4;&#x6587;&#x4EF6;&#x8D8A;&#x6765;&#x8D8A;&#x5927;&#x3002;</p>
 <p>AOF&#x91CD;&#x5199;&#x673A;&#x5236;&#x5C31;&#x662F;&#xFF0C;redis&#x6839;&#x636E;&#x6570;&#x636E;&#x5E93;&#x73B0;&#x72B6;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;AOF&#x6587;&#x4EF6;&#xFF0C;&#x8BFB;&#x53D6;&#x5E93;&#x4E2D;&#x6240;&#x6709;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#x5BF9;&#x7528;&#x4E00;&#x6761;&#x547D;&#x4EE4;&#x8BB0;&#x5F55;&#x5B83;&#x7684;&#x5199;&#x5165;&#x3002;&#x8D77;&#x5230;&#x4E86;&#x201D;&#x591A;&#x53D8;&#x4E00;&#x201C;&#x7684;&#x6548;&#x679C;&#x3002;</p>
@@ -533,7 +535,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1. AOF日志","level":"1.2.2.1","depth":3,"next":{"title":"2. RDB快照","level":"1.2.2.2","depth":3,"path":"redis_core/persistence/rdb.md","ref":"redis_core/persistence/rdb.md","articles":[]},"previous":{"title":"二、持久化机制","level":"1.2.2","depth":2,"path":"redis_core/persistence/README.md","ref":"redis_core/persistence/README.md","articles":[{"title":"1. AOF日志","level":"1.2.2.1","depth":3,"path":"redis_core/persistence/aof.md","ref":"redis_core/persistence/aof.md","articles":[]},{"title":"2. RDB快照","level":"1.2.2.2","depth":3,"path":"redis_core/persistence/rdb.md","ref":"redis_core/persistence/rdb.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","mermaid-gb3","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"张鹏","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","gitbook":"*","description":"通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。"},"file":{"path":"redis_core/persistence/aof.md","mtime":"2022-04-01T01:19:44.987Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-19T07:52:42.014Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1. AOF日志","level":"1.2.2.1","depth":3,"next":{"title":"2. RDB快照","level":"1.2.2.2","depth":3,"path":"redis_core/persistence/rdb.md","ref":"redis_core/persistence/rdb.md","articles":[]},"previous":{"title":"二、持久化机制","level":"1.2.2","depth":2,"path":"redis_core/persistence/README.md","ref":"redis_core/persistence/README.md","articles":[{"title":"1. AOF日志","level":"1.2.2.1","depth":3,"path":"redis_core/persistence/aof.md","ref":"redis_core/persistence/aof.md","articles":[]},{"title":"2. RDB快照","level":"1.2.2.2","depth":3,"path":"redis_core/persistence/rdb.md","ref":"redis_core/persistence/rdb.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","mermaid-gb3","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"mermaid-gb3":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"张鹏","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"学习笔记","language":"zh-hans","gitbook":"*","description":"通过学习笔记的形式构建自己的技术框架，便于自己复习，如果能帮到他人就更好了。"},"file":{"path":"redis_core/persistence/aof.md","mtime":"2022-04-20T04:58:55.711Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-04-20T09:28:06.442Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
