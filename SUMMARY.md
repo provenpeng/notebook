@@ -20,4 +20,4 @@
     * [5. 影响性能的因素](redis_core/practice/slow_reason.md)
     * [6. Redis作为缓存的问题](redis_core/practice/as_cache.md)
     * [7. 并发控制](redis_core/practice/concurrency.md)
-    * [8. 主从复制的坑](redis_core/practice/master_slave.md)
+    * [8. 主从切换的坑](redis_core/practice/master_slave.md)
