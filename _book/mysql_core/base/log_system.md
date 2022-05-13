@@ -82,6 +82,4 @@ checkpoint是当前要擦除的位置，也是往后推移并且循环的，可�
 
 redo log用于保证crash-safe能力。**innodb_flush_log_at_trx_commit**这个参数设置成1的时候，表示每次事务的redo log都直接持久化到磁盘，这样可以保证MySQL异常重启之后数据不丢失。
 
-sync_binlog这个参数设置成1的时候，表示每次事务的binlog都持久化到磁盘，这样可以保证MySQL异常重启之后binlog不丢失。
-
-
+**sync_binlog**这个参数设置成1的时候，表示每次事务的binlog都持久化到磁盘，这样可以保证MySQL异常重启之后binlog不丢失。
