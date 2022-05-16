@@ -27,6 +27,6 @@
     * [2. 日志系统](mysql_core/base/log_system.md)
     * [3. 事务隔离](mysql_core/base/affair.md)
     * [4. 索引](mysql_core/base/index.md)
-    * [5. 全局锁和表锁](mysql_core/base/lock.md)
+    * [5. 锁](mysql_core/base/lock.md)
   * [二、实战篇](mysql_core/persistence/README.md)
     * [1. 索引实践](mysql_core/persistence/index.md)
